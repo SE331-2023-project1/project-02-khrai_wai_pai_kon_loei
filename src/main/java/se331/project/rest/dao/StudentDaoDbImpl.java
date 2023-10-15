@@ -1,4 +1,5 @@
-package se331.project.dao;
+package se331.project.rest.dao;
+
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
@@ -6,15 +7,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
-import se331.project.entity.Student;
-import se331.project.repository.StudentRepository;
+import se331.project.rest.entity.Student;
+import se331.project.rest.repository.StudentRepository;
 
 @Repository
 @RequiredArgsConstructor
 @Profile("db")
 public class StudentDaoDbImpl implements StudentDao {
     final StudentRepository studentRepository;
-
     @Override
     public Integer getStudentSize() {
         return Math.toIntExact(studentRepository.count());

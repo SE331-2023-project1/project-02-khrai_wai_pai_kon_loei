@@ -1,11 +1,12 @@
-package se331.project.service;
+package se331.project.rest.service;
+
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import se331.project.dao.StudentDao;
-import se331.project.entity.Student;
+import se331.project.rest.dao.StudentDao;
+import se331.project.rest.entity.Student;
 
 @Service
 @RequiredArgsConstructor
@@ -35,5 +36,4 @@ public class StudentServiceImpl implements StudentService {
     public Student save(Student student) {
         return studentDao.save(student);
     }
-
 }

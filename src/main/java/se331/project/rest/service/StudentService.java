@@ -1,8 +1,9 @@
-package se331.project.service;
+package se331.project.rest.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import se331.project.entity.Student;
+import se331.project.rest.entity.Student;
+
 
 public interface StudentService {
     Integer getStudentsSize();
