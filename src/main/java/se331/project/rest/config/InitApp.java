@@ -27,13 +27,13 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .surname("Liwiriyasakun").build());
 
         teacherRepository.save(Teacher.builder()
-                .name("Dto")
-                .surname("Dto").build());
+                .name("CHARTCHAI")
+                .surname("DOUNGSA-ARD").build());
         teacherRepository.save(Teacher.builder()
-                .name("Kong")
-                .surname("Passakorn").build());
+                .name("PASSAKORN")
+                .surname("PHANNACHITTA").build());
         teacherRepository.save(Teacher.builder()
-                .name("Tei")
-                .surname("Pathathai").build());
+                .name("PATHATHAI")
+                .surname("NALUMPOON").build());
     }
 }
