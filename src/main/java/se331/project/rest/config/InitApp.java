@@ -56,7 +56,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .firstname("admin")
                 .lastname("admin")
                 .email("admin@admin.com")
-                .roles(List.of(Role.ROLE_ADMIN, Role.ROLE_DISTRIBUTOR))
+                .roles(List.of(Role.ROLE_ADMIN, Role.ROLE_ADVISEE))
                 .build();
 
         user2 = User.builder()
@@ -65,7 +65,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .firstname("user")
                 .lastname("user")
                 .email("enabled@user.com")
-                .roles(List.of(Role.ROLE_DISTRIBUTOR))
+                .roles(List.of(Role.ROLE_ADVISEE))
                 .build();
 
         user3 = User.builder()

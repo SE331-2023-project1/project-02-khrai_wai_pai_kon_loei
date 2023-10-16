@@ -17,11 +17,9 @@ import se331.project.rest.security.token.TokenType;
 import se331.project.rest.security.user.Role;
 import se331.project.rest.security.user.User;
 import se331.project.rest.security.user.UserRepository;
-import se331.project.rest.util.LabMapper;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -39,7 +37,7 @@ public class AuthenticationService {
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .roles(List.of(Role.ROLE_DISTRIBUTOR))
+                .roles(List.of(Role.ROLE_ADVISEE))
                 .build();
         var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);
