@@ -5,6 +5,7 @@ import org.mapstruct.factory.Mappers;
 import se331.project.rest.entity.Student;
 import se331.project.rest.entity.StudentDTO;
 import se331.project.rest.entity.Teacher;
+import se331.project.rest.entity.TeacherDTO;
 
 import java.util.List;
 @Mapper
@@ -15,9 +16,9 @@ public interface LabMapper {
 
         List<StudentDTO> getStudentDTO(List<Student> students);
 
-//        TeacherDTO getTeacherDTO(Teacher teacher);
-//
-//        List<TeacherDTO> getTeacherDTO(List<Teacher> teachers);
+        TeacherDTO getTeacherDTO(Teacher teacher);
+
+        List<TeacherDTO> getTeacherDTO(List<Teacher> teachers);
 
 //        UserDTO getUserDTO(User user);
 //

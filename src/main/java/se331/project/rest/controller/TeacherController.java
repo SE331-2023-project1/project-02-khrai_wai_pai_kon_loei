@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import se331.project.rest.util.LabMapper;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,13 +25,13 @@ public class TeacherController {
         Page<Teacher> pageOutput = teacherService.getTeachers(perPage, page);
         HttpHeaders responseHeader = new HttpHeaders();
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
-        return new ResponseEntity<>(pageOutput.getContent(),responseHeader, HttpStatus.OK);
+        return new ResponseEntity<>(LabMapper.INSTANCE.getTeacherDTO(pageOutput.getContent()),responseHeader, HttpStatus.OK);
     }
     @GetMapping("teachers/{id}")
     public ResponseEntity<?> getTeacher(@PathVariable("id") Long id) {
         Teacher output = teacherService.getTeacher(id);
         if (output != null) {
-            return ResponseEntity.ok(output);
+            return ResponseEntity.ok(LabMapper.INSTANCE.getTeacherDTO(output));
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
         }
