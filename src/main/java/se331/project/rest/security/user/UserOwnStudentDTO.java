@@ -1,6 +1,5 @@
-package se331.project.rest.entity;
+package se331.project.rest.security.user;
 
-import jakarta.persistence.ElementCollection;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,11 +11,10 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentOwnTeacherDTO{
+public class UserOwnStudentDTO {
     Long id;
     String name;
     String surname;
-    @ElementCollection
     List<String> images;
     String department;
 }

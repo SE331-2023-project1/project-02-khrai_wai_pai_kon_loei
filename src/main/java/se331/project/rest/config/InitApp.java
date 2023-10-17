@@ -25,67 +25,33 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-        User userT1 = new User();
-        userT1.setUsername("MM");
-        userT1.setFirstname("Mr. Mock");
-        userT1.setLastname("Kingbird");
-        userT1.setPassword("password");
-        userT1.setRoles(List.of(Role.ROLE_ADMIN));
-        userRepository.save(userT1);
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        User user1 = userRepository.save(User.builder()
+                .username("admin")
+                .password(encoder.encode("admin"))
+                .firstname("admin")
+                .lastname("admin")
+                .email("admin@admin.com")
+                .roles(List.of(Role.ROLE_ADMIN, Role.ROLE_ADVISEE))
+                .build());
 
+        Teacher teacher1 = teacherRepository.save(Teacher.builder().build());
+        Student student1 = studentRepository.save(Student.builder().build());
 
-        User userT2 = new User();
-        userT2.setUsername("SS");
-        userT2.setFirstname("Solid State");
-        userT2.setLastname("Of America");
-        userT2.setPassword("passasdword");
-        userT2.setRoles(List.of(Role.ROLE_ADVISOR));
-        userRepository.save(userT2);
+        // Establish relationships
+        user1.setTeacher(teacher1);
+        teacher1.getUser().add(user1);
+        teacher1.getStudents().add(student1);
+        student1.setTeacher(teacher1);
 
-
-        Teacher t1 = new Teacher();
-        t1.setUser(userT1);
-        teacherRepository.save(t1);
-
-        User userS1 = new User();
-        userS1.setUsername("Thiwakon");
-        userS1.setFirstname("Solid State");
-        userS1.setLastname("Of America");
-        userS1.setPassword("passwasdord");
-        userS1.setRoles(List.of(Role.ROLE_ADMIN));
-        userRepository.save(userS1);
-
-        User userS2 = new User();
-        userS2.setUsername("Pat");
-        userS2.setFirstname("Pattana");
-        userS2.setLastname("Pattana");
-        userS2.setPassword("passwasdord");
-        userS2.setRoles(List.of(Role.ROLE_ADMIN));
-        userRepository.save(userS2);
-
-        Student s1 = new Student();
-        s1.setUser(userS1);
-        s1.setTeacher(t1);
-        studentRepository.save(s1);
-
-        Teacher t2 = new Teacher();
-
-
-        Student s2 = new Student();
-
-        s2.setUser(userS2);
-        s2.setTeacher(t2);
-        studentRepository.save(s2);
-
-        t2.setUser(userT2);
-        t2.getStudents().add(s2);
-        s2.setTeacher(t2);
-        teacherRepository.save(t2);
-        studentRepository.save(s2);
-
+        // Save the entities with the relationships
+        userRepository.save(user1);
+        teacherRepository.save(teacher1);
+        studentRepository.save(student1);
     }
 }
-//        studentRepository.save(Student.builder()
+
+//        Student s1 = studentRepository.save(Student.builder()
 //                .name("Pattanachai")
 //                .surname("Nuyamang").build());
 //        studentRepository.save(Student.builder()
@@ -95,7 +61,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 //                .name("Pharunya")
 //                .surname("Liwiriyasakun").build());
 //
-//      Teacher t1 =  teacherRepository.save(Teacher.builder()
+//       Teacher t1 = teacherRepository.save(Teacher.builder()
 //                .name("CHARTCHAI")
 //                .surname("DOUNGSA-ARD").build());
 //        teacherRepository.save(Teacher.builder()
@@ -104,9 +70,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 //        teacherRepository.save(Teacher.builder()
 //                .name("PATHATHAI")
 //                .surname("NALUMPOON").build());
-//        addUser();
-//user1.getTeacher().add(t1);
-//t1.setUsers(user1);
+//
+//t1.getStudents().add(s1);
+//s1.setTeacher(t1);
 //    }
 //    User user1, user2, user3;
 //
@@ -152,6 +118,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 //        userRepository.save(user2);
 //        userRepository.save(user3);
 //    }
-
+//
 //
 //}

@@ -46,10 +46,10 @@ public class User implements UserDetails {
 
     //  @OneToOne(mappedBy = "user")
 //  Organizer organizer;
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user")
     private Student student;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @ManyToOne
     private Teacher teacher;
 
     @Override

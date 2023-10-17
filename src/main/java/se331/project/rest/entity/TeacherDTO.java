@@ -1,6 +1,7 @@
 package se331.project.rest.entity;
 import jakarta.persistence.*;
 import lombok.*;
+import se331.project.rest.security.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,5 +19,6 @@ public class TeacherDTO {
     String department;
     @Builder.Default
     List<TeacherOwnStudentDTO> students = new ArrayList<>();
-
+    @Builder.Default
+    private List<TeacherOwnUserDTO> user = new ArrayList<>();
 }

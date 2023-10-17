@@ -16,4 +16,5 @@ public class StudentDTO {
     List<String> images;
     String department;
     StudentOwnTeacherDTO teacher;
+    StudentOwnUserDTO user;
 }

@@ -21,8 +21,10 @@ public class Teacher {
     @ElementCollection
     List<String> images;
     String department;
-    @OneToOne
-    private User user;
+    @OneToMany(mappedBy = "teacher")
+    @Builder.Default
+    private List<User> user = new ArrayList<>();
+
     @OneToMany(mappedBy = "teacher")
     @Builder.Default
     private List<Student> students = new ArrayList<>();
