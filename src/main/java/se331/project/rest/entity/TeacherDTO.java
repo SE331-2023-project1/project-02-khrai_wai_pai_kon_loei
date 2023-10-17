@@ -2,6 +2,7 @@ package se331.project.rest.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -15,4 +16,7 @@ public class TeacherDTO {
     @ElementCollection
     List<String> images;
     String department;
+    @Builder.Default
+    List<TeacherOwnStudentDTO> students = new ArrayList<>();
+
 }

@@ -1,7 +1,9 @@
 package se331.project.rest.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -9,11 +11,10 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentDTO {
+public class StudentOwnTeacherDTO{
     Long id;
     String name;
     String surname;
     List<String> images;
     String department;
-    StudentOwnTeacherDTO teacher;
 }
