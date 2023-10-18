@@ -35,8 +35,14 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .roles(List.of(Role.ROLE_ADMIN, Role.ROLE_ADVISEE))
                 .build());
 
-        Teacher teacher1 = teacherRepository.save(Teacher.builder().build());
-        Student student1 = studentRepository.save(Student.builder().build());
+        Teacher teacher1 = teacherRepository.save(Teacher.builder()
+                .name("CHARTCHAI")
+                .surname("DOUNGSA-ARD")
+                .build());
+        Student student1 = studentRepository.save(Student.builder()
+                .name("Pattanachai")
+                .surname("Nuyamang")
+                .build());
 
         // Establish relationships
         user1.setTeacher(teacher1);
