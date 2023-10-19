@@ -39,6 +39,7 @@ public class SecurityConfiguration {
                             .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                             .requestMatchers(HttpMethod.POST,"/events").hasRole("ADMIN")
                             .requestMatchers(HttpMethod.GET,"/advisor").hasRole("ADVISEE")
+                            .requestMatchers(HttpMethod.POST,"/createTeacher").hasRole("ADMIN")
                             .anyRequest().authenticated();
                 })
                 .sessionManagement((session) -> {

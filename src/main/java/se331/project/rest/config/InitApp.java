@@ -23,6 +23,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     final TeacherRepository teacherRepository;
     final UserRepository userRepository;
 
+
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
         PasswordEncoder encoder = new BCryptPasswordEncoder();

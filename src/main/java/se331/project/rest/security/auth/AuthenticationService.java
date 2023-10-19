@@ -30,6 +30,7 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
+    //register student
     public AuthenticationResponse register(RegisterRequest request) {
         User user = User.builder()
                 .username(request.getUsername())
@@ -50,6 +51,7 @@ public class AuthenticationService {
                 .build();
     }
 
+    //register advisor
     public AuthenticationResponse advisorRegister(RegisterRequest request) {
         User advisor = User.builder()
                 .username(request.getUsername())
@@ -70,6 +72,7 @@ public class AuthenticationService {
                 .build();
     }
 
+    //login
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
