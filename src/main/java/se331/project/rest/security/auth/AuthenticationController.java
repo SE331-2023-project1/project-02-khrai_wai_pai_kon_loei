@@ -53,7 +53,12 @@ public class AuthenticationController {
     ) {
         return ResponseEntity.ok("hi veevi");
     }
-
+    @PostMapping("/register/teacher")
+    public ResponseEntity<?> teacherRegister(
+            @RequestBody RegisterRequest request
+    ) {
+        return ResponseEntity.ok(service.advisorRegister(request));
+    }
 
     @GetMapping("/all-Advisor")
     public ResponseEntity<?> getAllAdvisor(

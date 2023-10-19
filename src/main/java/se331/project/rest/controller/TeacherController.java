@@ -33,9 +33,9 @@ public class TeacherController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
         }
     }
-    @PostMapping("createTeacher")
-    public ResponseEntity<?> createTeacher(@RequestBody Teacher teacher){
-        Teacher saveTeacher = teacherService.save(teacher);
-        return ResponseEntity.ok(LabMapper.INSTANCE.getTeacherDTO(saveTeacher));
-    }
+//    @PostMapping("createTeacher")
+//    public ResponseEntity<?> createTeacher(@RequestBody Teacher teacher){
+//        Teacher saveTeacher = teacherService.save(teacher);
+//        return ResponseEntity.ok(LabMapper.INSTANCE.getTeacherDTO(saveTeacher));
+//    }
 }
