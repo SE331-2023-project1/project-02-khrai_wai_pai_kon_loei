@@ -1,10 +1,7 @@
 package se331.project.rest.security.user;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
@@ -29,6 +26,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue
+    @EqualsAndHashCode.Exclude
     private Integer id;
     private String parentId;
     private String firstname;

@@ -71,6 +71,28 @@ public class AuthenticationService {
                 .userRole(advisor.getRoles())
                 .build();
     }
+    //update teacher info
+    public AuthenticationResponse advisorUpdate(RegisterRequest request) {
+        User existingUser = repository.findByEmail(request.getEmail());
+        if(existingUser == null){
+            return null;
+        }
+        existingUser.setUsername(request.getUsername());
+        existingUser.setFirstname(request.getFirstname());
+        existingUser.setLastname(request.getLastname());
+        existingUser.setEmail(request.getEmail());
+        existingUser.setPassword(request.getPassword());
+
+        var savedUser = repository.save(existingUser);
+        var jwtToken = jwtService.generateToken(existingUser);
+        var refreshToken = jwtService.generateRefreshToken(existingUser);
+        saveUserToken(savedUser, jwtToken);
+        return AuthenticationResponse.builder()
+                .accessToken(jwtToken)
+                .refreshToken(refreshToken)
+                .userRole(existingUser.getRoles())
+                .build();
+    }
 
     //login
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
