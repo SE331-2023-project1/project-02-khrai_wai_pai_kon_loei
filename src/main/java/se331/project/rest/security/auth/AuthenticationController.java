@@ -59,9 +59,9 @@ public class AuthenticationController {
     ) {
         return ResponseEntity.ok(service.advisorRegister(request));
     }
-    @PutMapping("/update/teacher")
+    @PutMapping("/update")
     public ResponseEntity<?> teacherUpdate(@RequestBody RegisterRequest request){
-    return ResponseEntity.ok(service.advisorUpdate(request));
+    return ResponseEntity.ok(service.UpdateInfo(request));
     }
 
     @GetMapping("/all-Advisor")

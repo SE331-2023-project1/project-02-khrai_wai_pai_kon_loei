@@ -38,7 +38,7 @@ public class AuthenticationService {
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .roles(List.of(Role.ROLE_ADVISEE))
+                .roles(List.of(Role.ROLE_STUDENT))
                 .build();
         var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);
@@ -50,6 +50,9 @@ public class AuthenticationService {
                 .userRole(user.getRoles())
                 .build();
     }
+
+// student update info
+
 
     //register advisor
     public AuthenticationResponse advisorRegister(RegisterRequest request) {
@@ -72,7 +75,7 @@ public class AuthenticationService {
                 .build();
     }
     //update teacher info
-    public AuthenticationResponse advisorUpdate(RegisterRequest request) {
+    public AuthenticationResponse UpdateInfo(RegisterRequest request) {
         User existingUser = repository.findByEmail(request.getEmail());
         if(existingUser == null){
             return null;
