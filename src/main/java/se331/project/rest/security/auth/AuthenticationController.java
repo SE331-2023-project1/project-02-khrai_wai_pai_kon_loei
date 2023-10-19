@@ -27,7 +27,7 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> advisorRegister(
             @RequestBody RegisterRequest request
     ) {
-        return ResponseEntity.ok(service.advisorRegister(request));
+        return ResponseEntity.ok(service.teacherRegister(request));
     }
 
     //login
@@ -57,13 +57,16 @@ public class AuthenticationController {
     public ResponseEntity<?> teacherRegister(
             @RequestBody RegisterRequest request
     ) {
-        return ResponseEntity.ok(service.advisorRegister(request));
+        return ResponseEntity.ok(service.teacherRegister(request));
     }
-    @PutMapping("/update")
+    @PutMapping("/update/teacher")
     public ResponseEntity<?> teacherUpdate(@RequestBody RegisterRequest request){
     return ResponseEntity.ok(service.UpdateInfo(request));
     }
-
+    @PutMapping("/update/student")
+    public ResponseEntity<?> studentUpdate(@RequestBody RegisterRequest request){
+        return ResponseEntity.ok(service.UpdateInfo(request));
+    }
     @GetMapping("/all-Advisor")
     public ResponseEntity<?> getAllAdvisor(
 

@@ -55,14 +55,14 @@ public class AuthenticationService {
 
 
     //register advisor
-    public AuthenticationResponse advisorRegister(RegisterRequest request) {
+    public AuthenticationResponse teacherRegister(RegisterRequest request) {
         User advisor = User.builder()
                 .username(request.getUsername())
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .roles(List.of(Role.ROLE_ADVISOR))
+                .roles(List.of(Role.ROLE_TEACHER))
                 .build();
         var savedUser = repository.save(advisor);
         var jwtToken = jwtService.generateToken(advisor);
