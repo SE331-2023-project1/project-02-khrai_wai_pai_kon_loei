@@ -14,8 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 public class StudentOwnTeacherDTO{
     Long id;
-    String name;
-    String surname;
     @ElementCollection
     List<String> images;
     String department;

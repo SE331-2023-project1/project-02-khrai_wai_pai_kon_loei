@@ -16,8 +16,6 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long id;
-    String name;
-    String surname;
     @ElementCollection
     List<String> images;
     String department;

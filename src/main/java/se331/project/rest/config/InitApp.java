@@ -37,12 +37,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         Teacher teacher1 = teacherRepository.save(Teacher.builder()
-                .name("CHARTCHAI")
-                .surname("DOUNGSA-ARD")
                 .build());
         Student student1 = studentRepository.save(Student.builder()
-                .name("Pattanachai")
-                .surname("Nuyamang")
                 .build());
 
         // Establish relationships

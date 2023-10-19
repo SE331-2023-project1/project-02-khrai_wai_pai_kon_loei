@@ -12,8 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class TeacherOwnStudentDTO {
     Long id;
-    String name;
-    String surname;
+
     List<String> images;
     String department;
 }

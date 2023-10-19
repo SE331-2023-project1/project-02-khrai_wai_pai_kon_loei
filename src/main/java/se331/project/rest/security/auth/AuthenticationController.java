@@ -47,12 +47,12 @@ public class AuthenticationController {
         service.refreshToken(request, response);
     }
 
-    @GetMapping("/advisor")
-    public ResponseEntity<?> getAdvisor(
-
-    ) {
-        return ResponseEntity.ok("hi veevi");
-    }
+//    @GetMapping("/advisor")
+//    public ResponseEntity<?> getAdvisor(
+//
+//    ) {
+//        return ResponseEntity.ok("hi veevi");
+//    }
     @PostMapping("/register/teacher")
     public ResponseEntity<?> teacherRegister(
             @RequestBody RegisterRequest request
@@ -67,10 +67,10 @@ public class AuthenticationController {
     public ResponseEntity<?> studentUpdate(@RequestBody RegisterRequest request){
         return ResponseEntity.ok(service.UpdateInfo(request));
     }
-    @GetMapping("/all-Advisor")
-    public ResponseEntity<?> getAllAdvisor(
-
-    ) {
-        return ResponseEntity.ok("hi veevi eiei");
-    }
+//    @GetMapping("/all-Advisor")
+//    public ResponseEntity<?> getAllAdvisor(
+//
+//    ) {
+//        return ResponseEntity.ok("hi veevi eiei");
+//    }
 }

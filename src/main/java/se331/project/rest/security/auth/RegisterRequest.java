@@ -11,6 +11,7 @@ import se331.project.rest.security.user.Role;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterRequest {
+  private Long id;
   private String username;
   private String firstname;
   private String lastname;
