@@ -1,5 +1,6 @@
 package se331.project.rest.config;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
@@ -23,11 +24,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     final TeacherRepository teacherRepository;
     final UserRepository userRepository;
 
-
     @Override
+    @Transactional
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
-        User user1 = userRepository.save(User.builder()
+        userRepository.save(User.builder()
                 .username("admin")
                 .password(encoder.encode("admin"))
                 .firstname("admin")
@@ -35,6 +36,51 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .email("admin@admin.com")
                 .roles(List.of(Role.ROLE_ADMIN))
                 .build());
+
+        User userT1 = new User();
+        userT1.setUsername("MM");
+        userT1.setFirstname("Mr. Mock");
+        userT1.setLastname("Kingbird");
+        userT1.setPassword("password");
+        userT1.setRoles(List.of(Role.ROLE_TEACHER));
+        userRepository.save(userT1);
+
+        User userS1 = new User();
+        userS1.setUsername("Thiwakon");
+        userS1.setFirstname("Solid State");
+        userS1.setLastname("Of America");
+        userS1.setPassword("passwasdord");
+        userS1.setRoles(List.of(Role.ROLE_STUDENT));
+        userRepository.save(userS1);
+
+
+
+        Teacher t1 = new Teacher();
+        t1.setUser(userT1);
+        teacherRepository.save(t1);
+
+
+
+        Student s1 = new Student();
+        s1.setUser(userS1);
+        s1.setTeacher(t1);
+        studentRepository.save(s1);
+
+
+    }
+}
+
+//    @Override
+//    public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
+//        PasswordEncoder encoder = new BCryptPasswordEncoder();
+//        User user1 = userRepository.save(User.builder()
+//                .username("admin")
+//                .password(encoder.encode("admin"))
+//                .firstname("admin")
+//                .lastname("admin")
+//                .email("admin@admin.com")
+//                .roles(List.of(Role.ROLE_ADMIN))
+//                .build());
 //
 //        Teacher teacher1 = teacherRepository.save(Teacher.builder()
 //                .build());
@@ -50,8 +96,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 //        userRepository.save(user1);
 //        teacherRepository.save(teacher1);
 //        studentRepository.save(student1);
-    }
-}
+//    }
+//}
 
 //        Student s1 = studentRepository.save(Student.builder()
 //                .name("Pattanachai")
