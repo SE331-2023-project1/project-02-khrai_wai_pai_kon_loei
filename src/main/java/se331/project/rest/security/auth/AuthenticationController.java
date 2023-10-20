@@ -5,6 +5,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import se331.project.rest.entity.Student;
+import se331.project.rest.util.LabMapper;
 
 import java.io.IOException;
 
@@ -73,4 +75,9 @@ public class AuthenticationController {
 //    ) {
 //        return ResponseEntity.ok("hi veevi eiei");
 //    }
+    @PutMapping("/setStudentToTeacher")
+    public  ResponseEntity<?> setStudentToTeacher(@RequestBody RegisterRequest request){
+        Student setStudentToTeacher = service.setStudentToTeacher(request);
+        return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(setStudentToTeacher));
+    }
 }

@@ -4,6 +4,7 @@ package se331.project.rest.security.auth;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -11,6 +12,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import se331.project.rest.dao.StudentDao;
+import se331.project.rest.dao.TeacherDao;
 import se331.project.rest.entity.Student;
 import se331.project.rest.entity.Teacher;
 import se331.project.rest.repository.StudentRepository;
@@ -38,6 +41,10 @@ public class AuthenticationService {
     TeacherRepository teacherRepository;
     @Autowired
     StudentRepository studentRepository;
+    @Autowired
+    StudentDao studentDao;
+    @Autowired
+    TeacherDao teacherDao;
 
     //register student
     public AuthenticationResponse register(RegisterRequest request) {
@@ -94,7 +101,18 @@ public class AuthenticationService {
         saveUserToken(savedUser, jwtToken);
         return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).userRole(existingUser.getRoles()).build();
     }
+//admin set student to teacher
+    @Transactional
+    public  Student setStudentToTeacher(RegisterRequest request){
+        Student existingStudent = studentDao.getStudent(request.getId());
+        if(existingStudent == null){
+            return  null;
+        }
 
+        Teacher teacher = teacherDao.getTeacher(request.getId());
+        existingStudent.setTeacher(teacher);
+        return studentDao.save(existingStudent);
+    }
     //login
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
