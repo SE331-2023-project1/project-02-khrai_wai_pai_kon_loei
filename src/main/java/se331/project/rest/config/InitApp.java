@@ -33,7 +33,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .firstname("admin")
                 .lastname("admin")
                 .email("admin@admin.com")
-                .roles(List.of(Role.ROLE_ADMIN, Role.ROLE_ADVISEE))
+                .roles(List.of(Role.ROLE_ADMIN))
                 .build());
 
         Teacher teacher1 = teacherRepository.save(Teacher.builder()
