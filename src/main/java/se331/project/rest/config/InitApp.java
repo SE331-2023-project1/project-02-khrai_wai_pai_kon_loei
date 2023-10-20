@@ -35,22 +35,21 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .email("admin@admin.com")
                 .roles(List.of(Role.ROLE_ADMIN))
                 .build());
-
-        Teacher teacher1 = teacherRepository.save(Teacher.builder()
-                .build());
-        Student student1 = studentRepository.save(Student.builder()
-                .build());
-
-        // Establish relationships
-        user1.setTeacher(teacher1);
-        teacher1.getUser().add(user1);
-        teacher1.getStudents().add(student1);
-        student1.setTeacher(teacher1);
-
-        // Save the entities with the relationships
-        userRepository.save(user1);
-        teacherRepository.save(teacher1);
-        studentRepository.save(student1);
+//
+//        Teacher teacher1 = teacherRepository.save(Teacher.builder()
+//                .build());
+//        Student student1 = studentRepository.save(Student.builder()
+//                .build());
+//
+//        // Establish relationships
+//        user1.setTeacher(teacher1);
+//        teacher1.getStudents().add(student1);
+//        student1.setTeacher(teacher1);
+//
+//        // Save the entities with the relationships
+//        userRepository.save(user1);
+//        teacherRepository.save(teacher1);
+//        studentRepository.save(student1);
     }
 }
 

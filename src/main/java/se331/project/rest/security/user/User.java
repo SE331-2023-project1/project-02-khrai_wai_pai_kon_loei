@@ -47,7 +47,7 @@ public class User implements UserDetails {
     @OneToOne(mappedBy = "user")
     private Student student;
 
-    @ManyToOne
+    @OneToOne(mappedBy ="user")
     private Teacher teacher;
 
     @Override

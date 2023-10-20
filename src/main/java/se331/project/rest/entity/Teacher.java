@@ -19,9 +19,8 @@ public class Teacher {
     @ElementCollection
     List<String> images;
     String department;
-    @OneToMany(mappedBy = "teacher")
-    @Builder.Default
-    private List<User> user = new ArrayList<>();
+    @OneToOne
+    User user;
 
     @OneToMany(mappedBy = "teacher")
     @Builder.Default

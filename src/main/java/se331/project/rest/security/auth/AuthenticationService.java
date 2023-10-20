@@ -56,19 +56,20 @@ public class AuthenticationService {
 //        teacher.getStudents().add(student);
 //
 //        teacherRepository.save(teacher);
+
         studentRepository.save(student);
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         saveUserToken(savedUser, jwtToken);
         return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).userRole(user.getRoles()).build();
     }
-
-
     //register advisor
     public AuthenticationResponse teacherRegister(RegisterRequest request) {
         User advisor = User.builder().username(request.getUsername()).firstname(request.getFirstname()).lastname(request.getLastname()).email(request.getEmail()).password(passwordEncoder.encode(request.getPassword())).roles(List.of(Role.ROLE_TEACHER)).build();
         var savedUser = repository.save(advisor);
-
+        Teacher teacher = new Teacher();
+        teacher.setUser(savedUser);
+        teacherRepository.save(teacher);
         var jwtToken = jwtService.generateToken(advisor);
         var refreshToken = jwtService.generateRefreshToken(advisor);
         saveUserToken(savedUser, jwtToken);

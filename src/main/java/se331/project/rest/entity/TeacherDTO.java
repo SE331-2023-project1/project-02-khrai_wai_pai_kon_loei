@@ -18,6 +18,5 @@ public class TeacherDTO {
     String department;
     @Builder.Default
     List<TeacherOwnStudentDTO> students = new ArrayList<>();
-    @Builder.Default
-    private List<TeacherOwnUserDTO> user = new ArrayList<>();
+    TeacherOwnUserDTO user;
 }
