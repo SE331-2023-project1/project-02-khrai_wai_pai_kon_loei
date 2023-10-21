@@ -38,18 +38,18 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         User userT1 = new User();
-        userT1.setUsername("MM");
-        userT1.setFirstname("Mr. Mock");
-        userT1.setLastname("Kingbird");
+        userT1.setUsername("PP");
+        userT1.setFirstname("Pukkamat");
+        userT1.setLastname("jumpita");
         userT1.setPassword("password");
         userT1.setRoles(List.of(Role.ROLE_TEACHER));
         userRepository.save(userT1);
 
         User userS1 = new User();
-        userS1.setUsername("Thiwakon");
-        userS1.setFirstname("Solid State");
-        userS1.setLastname("Of America");
-        userS1.setPassword("passwasdord");
+        userS1.setUsername("Pudthai");
+        userS1.setFirstname("saikhung");
+        userS1.setLastname("Maisaikai");
+        userS1.setPassword("password");
         userS1.setRoles(List.of(Role.ROLE_STUDENT));
         userRepository.save(userS1);
 
