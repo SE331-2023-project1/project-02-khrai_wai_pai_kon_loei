@@ -38,7 +38,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         User userT1 = new User();
-        userT1.setUsername("PP");
+        userT1.setUsername("Teacher");
         userT1.setFirstname("Pukkamat");
         userT1.setLastname("jumpita");
         userT1.setPassword(encoder.encode("password"));
@@ -46,7 +46,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userRepository.save(userT1);
 
         User userS1 = new User();
-        userS1.setUsername("Pudthai");
+        userS1.setUsername("Student");
         userS1.setFirstname("saikhung");
         userS1.setLastname("Maisaikai");
         userS1.setPassword(encoder.encode("password"));
