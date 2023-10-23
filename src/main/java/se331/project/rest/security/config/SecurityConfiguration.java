@@ -48,6 +48,7 @@ public class SecurityConfiguration {
                             .requestMatchers(HttpMethod.GET,"/teachers").permitAll()
                             .requestMatchers(HttpMethod.GET,"/students/**").permitAll()
                             .requestMatchers(HttpMethod.GET,"/students/{id}").permitAll()
+                            .requestMatchers(HttpMethod.GET,"/searchUser/{keyword}").hasRole("ADMIN")
                             .anyRequest().authenticated();
                 })
                 .sessionManagement((session) -> {

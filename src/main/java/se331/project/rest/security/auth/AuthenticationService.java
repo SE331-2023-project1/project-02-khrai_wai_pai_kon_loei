@@ -7,6 +7,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,6 +27,7 @@ import se331.project.rest.security.token.TokenRepository;
 import se331.project.rest.security.token.TokenType;
 import se331.project.rest.security.user.Role;
 import se331.project.rest.security.user.User;
+import se331.project.rest.security.user.UserDao;
 import se331.project.rest.security.user.UserRepository;
 
 import java.io.IOException;
@@ -166,4 +170,5 @@ public class AuthenticationService {
             }
         }
     }
+
 }

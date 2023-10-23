@@ -6,6 +6,8 @@ import se331.project.rest.entity.Student;
 import se331.project.rest.entity.StudentDTO;
 import se331.project.rest.entity.Teacher;
 import se331.project.rest.entity.TeacherDTO;
+import se331.project.rest.security.user.User;
+import se331.project.rest.security.user.UserDTO;
 
 import java.util.List;
 @Mapper
@@ -20,7 +22,7 @@ public interface LabMapper {
 
         List<TeacherDTO> getTeacherDTO(List<Teacher> teachers);
 
-//        UserDTO getUserDTO(User user);
-//
-//        List<UserDTO> getUserDTO(List<User> users);
+        UserDTO getUserDTO(User user);
+
+        List<UserDTO> getUserDTO(List<User> users);
     }
