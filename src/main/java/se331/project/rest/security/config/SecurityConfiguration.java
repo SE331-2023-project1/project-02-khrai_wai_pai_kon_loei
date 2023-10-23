@@ -46,8 +46,8 @@ public class SecurityConfiguration {
                             .requestMatchers(HttpMethod.PUT,"/update/student").permitAll()
                             .requestMatchers(HttpMethod.GET,"/students").permitAll()
                             .requestMatchers(HttpMethod.GET,"/teachers").permitAll()
+                            .requestMatchers(HttpMethod.GET,"/students/**").permitAll()
                             .requestMatchers(HttpMethod.GET,"/students/{id}").permitAll()
-
                             .anyRequest().authenticated();
                 })
                 .sessionManagement((session) -> {
