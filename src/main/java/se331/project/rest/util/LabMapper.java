@@ -1,11 +1,9 @@
 package se331.project.rest.util;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-import se331.project.rest.entity.Student;
-import se331.project.rest.entity.StudentDTO;
-import se331.project.rest.entity.Teacher;
-import se331.project.rest.entity.TeacherDTO;
+import se331.project.rest.entity.*;
 import se331.project.rest.security.user.User;
 import se331.project.rest.security.user.UserDTO;
 
@@ -25,4 +23,13 @@ public interface LabMapper {
         UserDTO getUserDTO(User user);
 
         List<UserDTO> getUserDTO(List<User> users);
+        @Mapping(source = "teacher.user.firstname", target = "firstname")
+        @Mapping(source = "teacher.user.lastname", target = "lastname")
+        @Mapping(source = "teacher.user.username", target = "username")
+        @Mapping(source = "teacher.user.image", target = "image")
+        AnnouncementDTO getAnnouncementDTO(Announcement announcement);
+
+        AnnouncementDTO getAnnouncementDTO(User user);
+
+        List<AnnouncementDTO> getAnnouncementDTO(List<Announcement> announcements);
     }
