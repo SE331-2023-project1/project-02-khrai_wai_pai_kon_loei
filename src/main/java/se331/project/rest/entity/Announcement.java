@@ -23,8 +23,8 @@ public class Announcement {
 
     String title;
     String description;
-    String date;
-    String image;
+//    String date;
+//    String image;
 
     @ElementCollection
     @Column(length = 1000)
