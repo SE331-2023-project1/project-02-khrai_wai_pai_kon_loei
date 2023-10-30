@@ -5,13 +5,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDTO {
-    private Integer id;
-    private String parentId;
-    private String firstname;
-    private String lastname;
+    Integer id;
+    String parentId;
+    String firstname;
+    String lastname;
+    String email;
+
 }

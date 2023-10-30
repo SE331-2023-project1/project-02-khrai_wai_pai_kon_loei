@@ -36,6 +36,8 @@ public class SecurityConfiguration {
 
                     authorize.requestMatchers("api/v1/auth/**").permitAll()
                             .requestMatchers(HttpMethod.GET,"/events").permitAll()
+                            .requestMatchers("/uploadFile").permitAll()
+                            .requestMatchers("/annoucements/**").permitAll()
                             .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                             .requestMatchers(HttpMethod.POST,"/events").hasRole("ADMIN")
                             .requestMatchers(HttpMethod.GET,"/advisor").hasRole("ADVISEE")
