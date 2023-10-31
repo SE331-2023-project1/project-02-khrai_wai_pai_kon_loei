@@ -7,11 +7,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import se331.project.rest.dao.StudentDao;
 import se331.project.rest.entity.Student;
+import se331.project.rest.security.user.UserDao;
 
 @Service
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
     final StudentDao studentDao;
+    final UserDao userDao;
     @Override
     public Integer getStudentsSize() {
         return studentDao.getStudentSize();
@@ -35,5 +37,21 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student save(Student student) {
         return studentDao.save(student);
+    }
+
+    @Override
+    public Student updateDetail(Student student) {
+        Student updateStudent = studentDao.getStudent(student.getId());
+        if (updateStudent != null) {
+            updateStudent.getUser().setFirstname(student.getName());
+            updateStudent.getUser().setLastname(student.getSurname());
+
+
+            studentDao.save(updateStudent);
+
+            userDao.save(updateStudent.getUser());
+            return updateStudent;
+        }
+        return null;
     }
 }

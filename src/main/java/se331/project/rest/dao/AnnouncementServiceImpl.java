@@ -30,7 +30,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         Optional<Teacher> teacherOpt = teacherRepository.findById(teacherId);
 
         announcement.setTeacher(teacherOpt.get());
-//        announcement.setFile(announcement.getFile());
 
         return announcementRepository.save(announcement);
     }

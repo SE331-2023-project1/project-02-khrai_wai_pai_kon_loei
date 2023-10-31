@@ -1,5 +1,6 @@
 package se331.project.rest.controller;
 import org.springframework.web.bind.annotation.*;
+import se331.project.rest.entity.Student;
 import  se331.project.rest.entity.Teacher;
 import se331.project.rest.service.TeacherService;
 import lombok.RequiredArgsConstructor;
@@ -33,9 +34,9 @@ public class TeacherController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
         }
     }
-//    @PostMapping("createTeacher")
-//    public ResponseEntity<?> createTeacher(@RequestBody Teacher teacher){
-//        Teacher saveTeacher = teacherService.save(teacher);
-//        return ResponseEntity.ok(LabMapper.INSTANCE.getTeacherDTO(saveTeacher));
-//    }
+    @PutMapping("updateTeacher")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<?> updateTeacherDetails(@RequestBody Teacher teacher) {
+        return ResponseEntity.ok(LabMapper.INSTANCE.getTeacherDTO(teacherService.updateDetail(teacher)));
+    }
 }
