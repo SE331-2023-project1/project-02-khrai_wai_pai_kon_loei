@@ -19,6 +19,7 @@ public class Student {
     Long id;
     String name;
     String surname;
+    String email;
     @ElementCollection
     List<String> images;
     String department;

@@ -145,7 +145,7 @@ public class AuthenticationService {
                 .studentId(studentId)
                 .teacherId(teacherId)
                 .build();
-        
+
     }
 
     private void saveUserToken(User user, String jwtToken) {
