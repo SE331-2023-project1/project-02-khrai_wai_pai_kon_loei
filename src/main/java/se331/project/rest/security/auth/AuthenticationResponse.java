@@ -21,5 +21,9 @@ public class AuthenticationResponse {
   private String refreshToken;
   @JsonProperty("user_role")
   private List<Role> userRole;
+  @JsonProperty("student_id")
+  private Long studentId;
+  @JsonProperty("teacher_id")
+  private Long teacherId;
 //  private OrganizerAuthDTO user;
 }

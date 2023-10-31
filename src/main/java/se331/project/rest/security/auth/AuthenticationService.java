@@ -125,14 +125,27 @@ public class AuthenticationService {
         String jwtToken = jwtService.generateToken(user);
         String refreshToken = jwtService.generateRefreshToken(user);
 
+        Long teacherId = null;
+        Long studentId = null;
+
+        if (user.getTeacher() != null) {
+            teacherId = user.getTeacher().getId();
+        }
+        if (user.getStudent() != null) {
+            studentId = user.getStudent().getId();
+        }
         // Get the user's roles and convert them to a comma-separated string
         List<Role> userRoles = user.getRoles();
 
-//    revokeAllUserTokens(user);
+
         saveUserToken(user, jwtToken);
         return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken)
-//                .user(LabMapper.INSTANCE.getOrganizerAuthDTO(user.getOrganizer()))
-                .userRole(userRoles).build();
+
+                .userRole(userRoles)
+                .studentId(studentId)
+                .teacherId(teacherId)
+                .build();
+        
     }
 
     private void saveUserToken(User user, String jwtToken) {
